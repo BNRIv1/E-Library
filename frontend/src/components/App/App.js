@@ -17,7 +17,7 @@ class App extends Component {
             books: [],
             categories: [],
             authors: [],
-            selectedProduct: {}
+            selectedBook: {}
         }
     }
 
@@ -34,12 +34,13 @@ class App extends Component {
               <Route path={"/books/edit/:id"} exact render={() =>
                   <BookEdit categories={this.state.categories}
                             authors={this.state.authors}
-                            onEditBook={this.editBook}
-                            product={this.state.selectedProduct}/>}/>
+                            onEdit={this.editBook}
+                            book={this.state.selectedBook}/>}/>
               <Route path={"/books"} exact render={() =>
                   <Books books={this.state.books}
                          onDelete={this.deleteBook}
-                         onBorrow={this.borrowBook}/>}/>
+                         onBorrow={this.borrowBook}
+                         onEdit={this.getBook}/>}/>
               <Route path={"/categories"} exact render={() =>
               <Categories categories={this.state.categories}/>}/>
             </div>
@@ -100,7 +101,7 @@ class App extends Component {
         BookService.getBook(id)
             .then((data) => {
                 this.setState({
-                    selectedProduct: data.data
+                    selectedBook: data.data
                 });
             });
     }
