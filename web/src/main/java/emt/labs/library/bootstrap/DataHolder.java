@@ -12,6 +12,8 @@ import emt.labs.library.service.CountryService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class DataHolder {
 
@@ -29,17 +31,19 @@ public class DataHolder {
     public void init(){
 
         Category[] categories = Category.values();
+        Random randomNumber = new Random();
 
-        for (int i = 1; i <= 3; i++){
+
+        for (int i = 1; i <= 12; i++){
             this.countryService.save(new CountryDto("Country" + i, "Continent" + i));
         }
 
-        for (int i = 1; i <= 3; i++){
+        for (int i = 1; i <= 12; i++){
             this.authorService.save(new AuthorDto("Name" + i, "Surname" + i, Long.valueOf(i)));
         }
 
-        for (int i = 1; i <= 3; i++){
-            this.bookService.save(new BookDto("Book" + i, categories[i], Long.valueOf(i), i + 2));
+        for (int i = 1; i <= 12; i++){
+            this.bookService.save(new BookDto("Book" + i, categories[randomNumber.nextInt(6 - 1) + 1], Long.valueOf(i), randomNumber.nextInt(10)));
         }
 
     }
