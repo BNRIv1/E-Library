@@ -31,6 +31,7 @@ class Books extends React.Component{
                                 <th scope={"col"}>Category</th>
                                 <th scope={"col"}>Author</th>
                                 <th scope={"col"}>Available Copies</th>
+                                <th scope={"col"}></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,14 +50,21 @@ class Books extends React.Component{
                 <ReactPaginate previousLabel={"back"}
                                nextLabel={"next"}
                                breakLabel={<a href="/#">...</a>}
-                               breakClassName={"break-me"}
-                               pageClassName={"ml-1"}
                                pageCount={pageCount}
                                marginPagesDisplayed={2}
                                pageRangeDisplayed={5}
                                onPageChange={this.handlePageClick}
-                               containerClassName={"pagination m-4 justify-content-center"}
-                               activeClassName={"active"}/>
+                               breakClassName={'page-item'}
+                               breakLinkClassName={'page-link'}
+                               containerClassName={'pagination justify-content-center'}
+                               pageClassName={'page-item'}
+                               pageLinkClassName={'page-link'}
+                               previousClassName={'page-item'}
+                               previousLinkClassName={'page-link'}
+                               nextClassName={'page-item'}
+                               nextLinkClassName={'page-link'}
+                               activeClassName={'active'}
+                                />
             </div>
         );
     }
